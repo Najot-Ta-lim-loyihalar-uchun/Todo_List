@@ -4,7 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import themeReducer from "./features/themeToggleSlice";
 import todoesReducer from "./features/todoesSlice";
 import searchReducer from "./features/searchedSlice";
-import modalReducer from "./features/modalPort";
+import modalReducer from "./features/modalPortSlice";
 
 export const store = configureStore({
   reducer: {

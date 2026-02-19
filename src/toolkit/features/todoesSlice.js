@@ -21,7 +21,10 @@ const todoesList = createSlice({
       );
     },
     updateTodo: (state, { payload }) => {
-      console.log(1);
+      state.todoes = state.todoes.map((item) =>
+        item.id === payload.id ? { ...item, title: payload.title } : item,
+      );
+      toast.success(`${payload.title} todo updated`);
     },
     newTodo: (state, { payload }) => {
       state.todoes.push({

@@ -8,12 +8,15 @@ import { GoPencil } from "react-icons/go";
 /* rdxsf */
 import { deleteTodo, complateTodo } from "../toolkit/features/todoesSlice";
 import { Navigate } from "react-router-dom";
+import { modalPort } from "../toolkit/features/modalPortSlice";
+
 import NotFoundPage from "../pages/NotFoundPage";
 
 function TodoList() {
   const dispatch = useDispatch();
   const todos = useSelector((state) => state.todos.todoes);
   const searched = useSelector((state) => state.search.value);
+  const modalPortSate = useSelector((state) => state.modal.open);
 
   const filtered = todos.filter((item) =>
     item.title.toLowerCase().includes(searched.toLowerCase()),
@@ -53,7 +56,12 @@ function TodoList() {
             </div>
 
             <div className="flex gap-4 text-xl">
-              <GoPencil className="cursor-pointer" />
+              <GoPencil
+                onClick={() =>
+                  dispatch(modalPort({ id: id, open: true, value: title }))
+                }
+                className="cursor-pointer"
+              />
               <RiDeleteBin5Line
                 onClick={() => dispatch(deleteTodo(id))}
                 className="cursor-pointer text-red-500 hover:text-red-700"
