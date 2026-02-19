@@ -44,7 +44,7 @@ function TodoList() {
               />
 
               <h2
-                className={`text-lg font-bold break-words ${
+                className={`text-lg font-bold line-clamp-1  ${
                   completed ? "line-through text-gray-400" : ""
                 }`}
               >

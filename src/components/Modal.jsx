@@ -1,51 +1,50 @@
 import React, { useRef } from "react";
-
-import { newTodo } from "../toolkit/features/todoesSlice";
 import { useDispatch } from "react-redux";
+import { newTodo } from "../toolkit/features/todoesSlice";
 import { toast } from "react-toastify";
 
 function Modal({ title, hide, setHide }) {
   const dispatch = useDispatch();
-
   const todoTitle = useRef();
 
-  const handelSubmit = () => {
+  const handleSubmit = () => {
     const value = todoTitle.current.value.trim();
 
     if (!value) {
-      toast.warning("Ma'lumot to'gri emas");
+      toast.warning("Input bo'sh bo'lmasligi kerak");
+      return;
     }
 
     dispatch(newTodo(value));
     todoTitle.current.value = "";
-    setHide(true);
+    setHide(false);
   };
 
+  if (hide) return null;
+
   return (
-    <div
-      className={`${hide ? "hidden" : ""} fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4 `}
-    >
-      <div className="bg-white w-full max-w-[500px] h-[289px] min-h-[130px] rounded-3xl p-6 flex flex-col justify-between gap-6">
-        <div className="flex flex-col items-center">
-          <h2 className="text-2xl font-bold mb-6">{title}</h2>
-          <input
-            ref={todoTitle}
-            type="text"
-            placeholder="Input your note..."
-            className="py-3 px-4 outline-none border border-[#6C63FF] rounded-md w-full"
-          />
-        </div>
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
+      <div className="bg-white dark:bg-gray-800 w-full max-w-md rounded-3xl p-6 flex flex-col gap-6">
+        <h2 className="text-2xl font-bold text-center">{title}</h2>
+
+        <input
+          ref={todoTitle}
+          type="text"
+          placeholder="Input your note..."
+          className="py-3 px-4 rounded-md border border-primary focus:ring-2 focus:ring-primary outline-none dark:bg-gray-700"
+        />
+
         <div className="flex justify-between">
           <button
-            onClick={() => setHide(true)}
-            className="px-5 py-2 border border-[#6C63FF] rounded-md cursor-pointer"
+            onClick={() => setHide(false)}
+            className="px-5 py-2 border border-primary rounded-md"
           >
             Cancel
           </button>
 
           <button
-            onClick={() => handelSubmit()}
-            className="px-5 py-2 bg-[#6C63FF] text-white rounded-md cursor-pointer hover:bg-[#5951cb]"
+            onClick={handleSubmit}
+            className="px-5 py-2 bg-primary hover:bg-primaryHover text-white rounded-md"
           >
             Apply
           </button>

@@ -11,7 +11,7 @@ function SearchBar() {
   const value = useSelector((state) => state.search.value);
 
   return (
-    <div className="flex items-center px-4 py-3 border-2 rounded-md border-[#6C63FF]  w-[595px] min-w-[80px]">
+    <div className="flex items-center px-4 py-3 border-2 rounded-md border-primary w-full">
       <input
         value={value}
         onChange={(e) => dispatch(setSearch(e.target.value))}

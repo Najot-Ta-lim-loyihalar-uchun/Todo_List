@@ -1,27 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-/* Layout */
 import PublicLayout from "./layout/PublicLayout";
-
-/* pages  */
 import TodoPage from "./pages/TodoPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
-function App() {
+function AppWrapper() {
+  const mode = useSelector((state) => state.theme.mode);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", mode === "dark");
+  }, [mode]);
+
   const routes = createBrowserRouter([
     {
       path: "/",
       element: <PublicLayout />,
       children: [
-        {
-          index: true,
-          element: <TodoPage />,
-        },
-        {
-          path: "*",
-          element: <NotFoundPage />,
-        },
+        { index: true, element: <TodoPage /> },
+        { path: "*", element: <NotFoundPage /> },
       ],
     },
   ]);
@@ -29,4 +27,4 @@ function App() {
   return <RouterProvider router={routes} />;
 }
 
-export default App;
+export default AppWrapper;
