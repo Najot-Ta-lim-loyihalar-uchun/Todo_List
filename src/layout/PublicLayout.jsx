@@ -31,7 +31,7 @@ function PublicLayout() {
           <FaPlus size={20} />
         </button>
 
-        <Modal title={"NEW NOTE"} />
+        <Modal />
       </footer>
       <ToastContainer />
     </>

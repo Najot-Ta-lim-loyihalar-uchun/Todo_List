@@ -4,10 +4,12 @@ import { newTodo, updateTodo } from "../toolkit/features/todoesSlice";
 import { toast } from "react-toastify";
 import { modalPort } from "../toolkit/features/modalPortSlice";
 
-function Modal({ title }) {
+function Modal() {
   const modalPortState = useSelector((state) => state.modal.open);
   const modalPortID = useSelector((state) => state.modal.id);
   const modalPortValue = useSelector((state) => state.modal.value);
+
+  const title = modalPortID ? "EDIT NOTE" : "NEW NOTE";
 
   const dispatch = useDispatch();
 
