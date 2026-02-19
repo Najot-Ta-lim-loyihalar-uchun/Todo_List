@@ -17,6 +17,7 @@ function Modal() {
   const dispatch = useDispatch();
 
   const todoTitle = useRef();
+
   const handleSubmit = () => {
     const value = todoTitle.current.value.trim();
     if (!value) {
@@ -25,12 +26,13 @@ function Modal() {
     }
     if (modalPortID) {
       dispatch(updateTodo({ title: value, id: modalPortID }));
+      setText("");
       dispatch(modalPort({ open: false }));
       return;
     }
 
     dispatch(newTodo(value));
-    todoTitle.current.value = "";
+    setText("");
     dispatch(modalPort({ open: false }));
   };
   if (!modalPortState) return null;

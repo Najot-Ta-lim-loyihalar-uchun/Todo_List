@@ -8,3 +8,8 @@
   padding-left: 20px;
   padding-right: 20px;
 }
+
+/* globals.css yoki index.css */
+::-webkit-scrollbar {
+  width: 0px;
+}
