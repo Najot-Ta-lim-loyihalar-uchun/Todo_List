@@ -25,7 +25,7 @@ function TodoList() {
   }
 
   return (
-    <ul className="w-full">
+    <ul className="max-w-[580px] mx-auto ">
       {filtered.map((item) => {
         let { id, completed, title } = item;
 
