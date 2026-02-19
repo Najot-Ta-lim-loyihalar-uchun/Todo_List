@@ -21,7 +21,7 @@ const todoesList = createSlice({
       );
     },
     updateTodo: (state, { payload }) => {
-      state;
+      console.log(1);
     },
     newTodo: (state, { payload }) => {
       state.todoes.push({

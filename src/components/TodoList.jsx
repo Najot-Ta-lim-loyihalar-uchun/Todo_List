@@ -25,15 +25,15 @@ function TodoList() {
   }
 
   return (
-    <ul className="max-w-[520px] w-full mx-auto">
+    <ul className="w-full">
       {filtered.map((item) => {
         let { id, completed, title } = item;
 
         return (
           <li
             key={id}
-            className="flex flex-col sm:flex-row sm:justify-between sm:items-center 
-            gap-4 py-4 border-b border-[#6C63FF] cursor-pointer"
+            className="flex flex-row justify-between items-center 
+            gap-4 py-4 border-b border-[#6C63FF]"
           >
             <div className="flex items-center gap-4">
               <input
@@ -44,7 +44,7 @@ function TodoList() {
               />
 
               <h2
-                className={`text-lg font-bold line-clamp-1  ${
+                className={`text-lg font-bold break-words ${
                   completed ? "line-through text-gray-400" : ""
                 }`}
               >
