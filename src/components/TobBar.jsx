@@ -11,7 +11,7 @@ function TobBar() {
     <div>
       <Link
         to={"/"}
-        className="block text-2xl sm:text-3xl font-bold text-[#252525] mb-4 text-center"
+        className="block text-2xl sm:text-3xl font-bold  mb-4 text-center"
       >
         TODO LIST
       </Link>

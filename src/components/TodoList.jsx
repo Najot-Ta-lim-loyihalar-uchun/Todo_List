@@ -25,7 +25,7 @@ function TodoList() {
   }
 
   return (
-    <ul className="w-full">
+    <ul className="max-w-[520px] w-full mx-auto">
       {filtered.map((item) => {
         let { id, completed, title } = item;
 
@@ -33,7 +33,7 @@ function TodoList() {
           <li
             key={id}
             className="flex flex-col sm:flex-row sm:justify-between sm:items-center 
-            gap-4 py-4 border-b border-[#6C63FF]"
+            gap-4 py-4 border-b border-[#6C63FF] cursor-pointer"
           >
             <div className="flex items-center gap-4">
               <input

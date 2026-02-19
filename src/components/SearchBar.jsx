@@ -11,15 +11,15 @@ function SearchBar() {
   const value = useSelector((state) => state.search.value);
 
   return (
-    <div className="flex items-center px-4 py-3 border-2 rounded-md border-primary w-full">
+    <div className=" flex items-center px-4 py-3 border-2 rounded-md border-[#6C63FF] w-full">
       <input
         value={value}
         onChange={(e) => dispatch(setSearch(e.target.value))}
         type="text"
-        placeholder="Search..."
-        className="w-full outline-none"
+        placeholder="Search note..."
+        className="w-full text-[#666666] font-bold outline-none"
       />
-      <CiSearch size={21} className="text-[#6C63FF]" />
+      <CiSearch size={21} className="text-[#6C63FF] " />
     </div>
   );
 }
