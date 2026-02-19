@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { newTodo, updateTodo } from "../toolkit/features/todoesSlice";
 import { toast } from "react-toastify";
@@ -8,7 +8,10 @@ function Modal() {
   const modalPortState = useSelector((state) => state.modal.open);
   const modalPortID = useSelector((state) => state.modal.id);
   const modalPortValue = useSelector((state) => state.modal.value);
-
+  const [text, setText] = React.useState(modalPortValue);
+  useEffect(() => {
+    setText(modalPortValue);
+  }, [modalPortValue]);
   const title = modalPortID ? "EDIT NOTE" : "NEW NOTE";
 
   const dispatch = useDispatch();
@@ -31,6 +34,7 @@ function Modal() {
     dispatch(modalPort({ open: false }));
   };
   if (!modalPortState) return null;
+
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
       <div className="bg-white dark:bg-[#252525] dark:border border-white w-full max-w-md h-[300px] rounded-3xl p-6 flex flex-col justify-between gap-6">
@@ -39,7 +43,9 @@ function Modal() {
           <input
             ref={todoTitle}
             type="text"
-            placeholder={modalPortValue || "Input your note..."}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            placeholder={"Input your note..."}
             className="py-3 px-4 w-full rounded-md border border-[#6C63FF] dark:border-[#fff] outline-none "
           />
         </div>
